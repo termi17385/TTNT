@@ -235,3 +235,4 @@ Received Import Request.
 Start importing Assets/TTNT/Scenes/GreyBox.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78fe9185a67085d03c98b4b2c5635c5f') in 0.016687 seconds
   Import took 0.022529 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
