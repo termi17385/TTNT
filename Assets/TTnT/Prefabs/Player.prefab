@@ -266,7 +266,7 @@ MonoBehaviour:
   sceneId: 0
   serverOnly: 0
   visible: 0
-  m_AssetId: 
+  m_AssetId: 03c8cb04b05ec794daf12305438fb7a5
   hasSpawned: 0
 --- !u!114 &7435392414859392436
 MonoBehaviour:
@@ -298,6 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  cam: {fileID: 2961484670792021002}
 --- !u!114 &5116062765267244228
 MonoBehaviour:
   m_ObjectHideFlags: 0
