@@ -112,3 +112,4 @@ Received Import Request.
 Start importing Assets/TTNT/Scenes/OfflineScene.unity using Guid(355b285dafc574148a9e889e432eabba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27cce41912bf4349e7b9ae70689150fc') in 0.025702 seconds
   Import took 0.030721 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
