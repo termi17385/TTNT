@@ -874,3 +874,19 @@ System memory in use after: 81.2 MB.
 Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2232.
 Total: 6.739500 ms (FindLiveObjects: 2.389500 ms CreateObjectMapping: 0.257900 ms MarkObjects: 3.982300 ms  DeleteObjects: 0.107900 ms)
 
+========================================================================
+Received Import Request.
+  Time since last request: 5129.922175 seconds.
+  path: Assets/TTNT/Scenes
+  artifactKey: Guid(a98952c84876b0c44b7747d258cc6871) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TTNT/Scenes using Guid(a98952c84876b0c44b7747d258cc6871) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7eed43a267d1e427c1e8dcd6fed2deb7') in 0.023763 seconds
+  Import took 0.030448 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.364601 seconds.
+  path: Assets/TTNT/Scenes/OfflineScene.unity
+  artifactKey: Guid(355b285dafc574148a9e889e432eabba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TTNT/Scenes/OfflineScene.unity using Guid(355b285dafc574148a9e889e432eabba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27cce41912bf4349e7b9ae70689150fc') in 0.025702 seconds
+  Import took 0.030721 seconds .
+
