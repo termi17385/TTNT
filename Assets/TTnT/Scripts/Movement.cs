@@ -2,9 +2,7 @@ using System;
 
 using UnityEngine;
 
-/// <summary>
-/// Responsible for controlling character movement using the input settings from the Unity Project Settings
-/// </summary>
+/// <summary>/// Responsible for controlling character movement using the input settings from the Unity Project Settings/// </summary>
 [RequireComponent(typeof(CharacterController))]
 public class Movement : MonoBehaviour
 {
