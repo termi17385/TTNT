@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TTNT/Scenes/Movement Test.unity
     guid: de65df67214ac7c45bd2a28ccd6e91f7
+  - enabled: 1
+    path: Assets/TTNT/Scenes/GreyBox.unity
+    guid: 79248bef7d15c72408ed75398a9c4c28
   m_configObjects: {}
