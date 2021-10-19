@@ -70,7 +70,7 @@ namespace TTnT.Scripts
             playerChar.Move(vel * Time.deltaTime);
         }
 
-        private void OnTriggerEnter(Collider _other) { if(_other.gameObject.CompareTag("Ground")) grounded = true; }
-        private void OnTriggerExit(Collider _other) { if(_other.gameObject.CompareTag("Ground")) grounded = false; }
+        private void OnTriggerEnter(Collider _other) { if(!_other.gameObject.CompareTag("Player")) grounded = true; }
+        private void OnTriggerExit(Collider _other) { if(!_other.gameObject.CompareTag("Player")) grounded = false; }
     }
 }

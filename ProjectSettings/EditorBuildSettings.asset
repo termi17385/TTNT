@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TTNT/Scenes/Movement Test.unity
     guid: de65df67214ac7c45bd2a28ccd6e91f7
+  - enabled: 1
+    path: Assets/TTNT/Scenes/FPS testing.unity
+    guid: 47918c3b2ce6742458ae1e398b0dd8de
   m_configObjects: {}
