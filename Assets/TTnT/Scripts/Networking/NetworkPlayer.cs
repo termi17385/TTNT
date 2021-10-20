@@ -1,4 +1,7 @@
 using Mirror;
+
+using System;
+
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -7,14 +10,19 @@ namespace TTnT.Scripts.Networking
     [RequireComponent(typeof(PlayerController), typeof(MouseLook))]
     public class NetworkPlayer : NetworkBehaviour
     {
-        [SerializeField] private Camera cam;
+        #region Disable if not local player
         [SerializeField] private MouseLook mouseLook;
+        [SerializeField] private Camera cam;
         [SerializeField] private Canvas canvas;
-        [SerializeField] private Transform target;
+        [SerializeField] private GunTest gun;
+        [SerializeField] private AudioListener listener;
+        [SerializeField] private AudioSource[] gunAudioSources;
+
+        [SerializeField] private readonly string remotePlayerName = "RemotePlayer";
+        #endregion
         [FormerlySerializedAs("ui"),SerializeField] private GameObject selfUI;
-  
-        // Update is called once per frame
-        void Update()
+
+        private void Start()
         {
             if (isLocalPlayer)
             {
@@ -25,9 +33,20 @@ namespace TTnT.Scripts.Networking
                 cam.enabled = false;
                 canvas.enabled = false;
                 mouseLook.enabled = false;
+                gun.enabled = false;
+                listener.enabled = false;
+                foreach(var audioSource in gunAudioSources) audioSource.enabled = false;
+                foreach(Transform child in gameObject.transform) child.gameObject.layer = LayerMask.NameToLayer(remotePlayerName);
+                gameObject.layer = LayerMask.NameToLayer(remotePlayerName);
             }
         }
 
+        // Update is called once per frame
+        void Update()
+        {
+            
+        }
+        
         // This is run via the network starting and the player connecting...
         // NOT Unity
         // It is run when the object is spawned via the networking system NOT when Unity

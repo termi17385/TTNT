@@ -6,31 +6,49 @@ namespace TTnT.Scripts
     [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour
     {
-        /// <summary> The character controller attached to the player character's </summary>
-        private CharacterController playerChar;
+        #region Main Variables
         /// <summary> The speed of character movement </summary>
-        [SerializeField] private float speed = 10f;
+        [Header("Main Variables"), SerializeField] private float speed = 10f;
         [SerializeField] private float vSpeed = 0;
         /// <summary> Speed of the jump </summary>
         [SerializeField] private float jumpSpeed = 15f;
         /// <summary> The force of gravity applied to the character </summary>
-        private float gravity = 9.8f;
         [SerializeField] private float gravityModifier = 1f;
-
+        #endregion
+        #region private Variables 
+        /// <summary> The character controller attached to the player character's </summary>
+        [Space] private CharacterController playerChar;
         private bool grounded;
         private bool resetGravity;
-
-        void Start()
+        private float gravity = 9.8f;
+        #endregion
+        #region public Variables
+        public bool isDead;
+        public GameObject[] hideObjects;
+        #endregion
+        #region Start Update
+        private void Start()
         {
             // Sets playerChar to the CharacterController attached to the player
             playerChar = GetComponent<CharacterController>();
         }
-
-        void Update()
+        private void Update()
         {
-            PlayerMovement();
+            if(!isDead) PlayerMovement();
+            else if (isDead) PlayerSpectatorMode();
         }
-        
+        #endregion
+        #region Movement Types
+        /// <summary> Basic spectator flight
+        /// when the player dies </summary>
+        private void PlayerSpectatorMode()
+        {
+            var h = Input.GetAxis("Horizontal") * (speed * 100) * Time.deltaTime;
+            var v = Input.GetAxis("Vertical") * (speed * 100) * Time.deltaTime;
+            
+            transform.position += (transform.forward * v * Time.deltaTime);
+            transform.position += (transform.right * h * Time.deltaTime);
+        }
         /// <summary> Handles the movement
         /// and jumping of the player </summary>
         private void PlayerMovement()
@@ -69,8 +87,10 @@ namespace TTnT.Scripts
             vel.y = vSpeed;
             playerChar.Move(vel * Time.deltaTime);
         }
-
+        #endregion
+        #region Basic Ground Check
         private void OnTriggerEnter(Collider _other) { if(!_other.gameObject.CompareTag("Player")) grounded = true; }
         private void OnTriggerExit(Collider _other) { if(!_other.gameObject.CompareTag("Player")) grounded = false; }
+        #endregion
     }
 }

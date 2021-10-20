@@ -64,7 +64,7 @@ using UnityEngine.Events;
         /// custom criteria such as language, full server game mode or difficulty
         /// </remarks>
         /// <param name="_request">Request coming from client</param>
-        /// <param name="_endpoint">Address of the client that sent the request</param>
+        /// <param name="_endPoint">Address of the client that sent the request</param>
         protected override DiscoveryResponse ProcessRequest(DiscoveryRequest _request, IPEndPoint _endPoint)
         {
             try
