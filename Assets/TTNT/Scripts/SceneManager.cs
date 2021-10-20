@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Mirror;
 
 public class SceneManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class SceneManager : MonoBehaviour
 	public void ChangeLevel(int SceneIndex)
 	{
 		// Changes scene to the scene associated with the SceneIndex int
-		UnityEngine.SceneManagement.SceneManager.LoadScene(SceneIndex);
+		UnityEngine.SceneManagement.SceneManager.LoadScene(SceneIndex, LoadSceneMode.Additive);
 	}
 
 	public void ReloadScene()
@@ -17,7 +18,7 @@ public class SceneManager : MonoBehaviour
 		// Sets currentScene to the currently open scene
 		Scene currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
 		// Reloads the scene
-		UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene.name);
+		UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene.name, LoadSceneMode.Additive);
 	}
 
 	public void QuitGame()
