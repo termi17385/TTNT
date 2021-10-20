@@ -1,0 +1,95 @@
+using System.Collections.Generic;
+using JetBrains.Annotations;
+using Mirror;
+using TTnT.Scripts.Networking;
+
+	public class CustomNetworkManager : NetworkManager
+	{
+		/// <summary>
+		/// A reference to the CustomNetworkManager version of the singleton
+		/// </summary>
+		public static CustomNetworkManager Instance => singleton as CustomNetworkManager;
+
+		[CanBeNull]
+		public static NetworkPlayer FindPlayer(uint _id)
+		{
+			Instance.players.TryGetValue(_id, out NetworkPlayer player);
+			return player;
+		}
+
+		/// <summary>
+		/// Adds a player to the dictionary
+		/// </summary>
+		/// <param name="_player"></param>
+		public static void AddPlayer([NotNull] NetworkPlayer _player) => Instance.players.Add(_player.netId, _player);
+
+		/// <summary>
+		/// Removes a player from the dictionary
+		/// </summary>
+		/// <param name="_player"></param>
+		public static void RemovePlayer([NotNull] NetworkPlayer _player) => Instance.players.Remove(_player.netId);
+
+		/// <summary>
+		/// A reference to the localplayer of the game
+		/// </summary>
+		public static NetworkPlayer LocalPlayer
+		{
+			get
+			{
+				// If the internal localplayer instance is null
+				if (localPlayer == null)
+				{
+					// loop through each player in the game and check if it is a local player
+					foreach (NetworkPlayer networkPlayer in Instance.players.Values)
+					{
+						if (networkPlayer.isLocalPlayer)
+						{
+							// Set localPlayer to this player as it is the localPlayer
+							localPlayer = networkPlayer;
+							break;
+						}
+					}
+				}
+				// Return the cached local player
+				return localPlayer;
+			}
+		}
+		
+		/// <summary>
+		/// the internal reference to the localPlayer
+		/// </summary>
+		private static NetworkPlayer localPlayer;
+
+		/// <summary>
+		/// Whether or not this NetworkManager is the host
+		/// </summary>
+		public bool IsHost { get; private set; } = false;
+
+		public CustomNetworkDiscovery discovery;
+
+		/// <summary>
+		/// The dictionary of all connected players using their NetID as the key
+		/// </summary>
+		private readonly Dictionary<uint, NetworkPlayer> players = new Dictionary<uint, NetworkPlayer>();
+
+		/// <summary>
+		/// This is invoked when a host is started.
+		/// <para>StartHost has multiple signatures, but they all cause this hook to be called.</para>
+		/// </summary>
+		public override void OnStartHost()
+		{
+			IsHost = true;
+			// This makes in visible on the network
+			discovery.AdvertiseServer();
+		}
+
+		/// <summary>
+		/// This is called when a host is stopped.
+		/// </summary>
+		public override void OnStopHost()
+		{
+			IsHost = false;
+		}
+
+    
+	}
