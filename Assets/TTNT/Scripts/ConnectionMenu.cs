@@ -7,8 +7,7 @@ using Mirror;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace NetworkGame
-{
+
     public class ConnectionMenu : MonoBehaviour
     {
         private CustomNetworkManager networkManager;
@@ -23,7 +22,7 @@ namespace NetworkGame
         [SerializeField] private DiscoveredGame discoveredGameTemplate;
 
         private Dictionary<IPAddress, DiscoveredGame> discoveredGames = new Dictionary<IPAddress, DiscoveredGame>();
-        private void Awake()
+        private void Start()
         {
             networkManager = CustomNetworkManager.Instance;
             transport = Transport.activeTransport as KcpTransport;
@@ -73,4 +72,3 @@ namespace NetworkGame
             }
         }
     }
-}
