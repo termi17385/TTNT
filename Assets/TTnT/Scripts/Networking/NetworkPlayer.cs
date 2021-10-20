@@ -10,7 +10,6 @@ namespace TTnT.Scripts.Networking
         [SerializeField] private Camera cam;
         [SerializeField] private MouseLook mouseLook;
         [SerializeField] private Canvas canvas;
-        [SerializeField] private UIFollowCam followCam;
         [SerializeField] private Transform target;
         [FormerlySerializedAs("ui"),SerializeField] private GameObject selfUI;
   
@@ -19,7 +18,6 @@ namespace TTnT.Scripts.Networking
         {
             if (isLocalPlayer)
             {
-                target = transform;
                 selfUI.SetActive(false);
             }
             else
@@ -27,8 +25,6 @@ namespace TTnT.Scripts.Networking
                 cam.enabled = false;
                 canvas.enabled = false;
                 mouseLook.enabled = false;
-                followCam.enabled = false;
-                followCam.target = target;
             }
         }
 

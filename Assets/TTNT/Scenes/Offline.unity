@@ -225,9 +225,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 728924065}
-  - component: {fileID: 728924064}
   - component: {fileID: 728924063}
-  - component: {fileID: 728924062}
+  - component: {fileID: 728924064}
   m_Layer: 0
   m_Name: Network Manager
   m_TagString: Untagged
@@ -235,21 +234,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &728924062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 728924061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showGUI: 1
-  offsetX: 0
-  offsetY: 0
 --- !u!114 &728924063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,7 +268,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 728924061}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aab4c8111b7c411b9b92cf3dbc5bd4e, type: 3}
+  m_Script: {fileID: 11500000, guid: ad7861bb954050845be40182e2dd961d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
@@ -302,8 +286,9 @@ MonoBehaviour:
   authenticator: {fileID: 0}
   playerPrefab: {fileID: 2961484671592255350, guid: 03c8cb04b05ec794daf12305438fb7a5, type: 3}
   autoCreatePlayer: 1
-  playerSpawnMethod: 1
+  playerSpawnMethod: 0
   spawnPrefabs: []
+  discovery: {fileID: 0}
 --- !u!4 &728924065
 Transform:
   m_ObjectHideFlags: 0

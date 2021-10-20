@@ -9,6 +9,9 @@ public class UIFollowCam : MonoBehaviour
 
     private void Update()
     {
+        var localPlayer = CustomNetworkManager.LocalPlayer;
+        
+        target = localPlayer.transform;
         transform.LookAt(target, Vector3.up);
     }
 }
