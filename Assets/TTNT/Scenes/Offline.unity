@@ -293,7 +293,7 @@ MonoBehaviour:
   autoStartServerBuild: 1
   serverTickRate: 30
   offlineScene: Assets/TTNT/Scenes/Offline.unity
-  onlineScene: Assets/TTNT/Scenes/Movement Test.unity
+  onlineScene: Assets/TTNT/Scenes/FPS testing.unity
   transport: {fileID: 728924063}
   networkAddress: localhost
   maxConnections: 100

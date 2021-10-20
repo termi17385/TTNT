@@ -99,6 +99,6 @@ public class Movement : MonoBehaviour
         playerChar.Move(vel * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider _other) { if(_other.gameObject.CompareTag("Ground")) grounded = true; }
-    private void OnTriggerExit(Collider _other) { if(_other.gameObject.CompareTag("Ground")) grounded = false; }
+    private void OnTriggerEnter(Collider _other) =>  grounded = true;
+    private void OnTriggerExit(Collider _other)  =>  grounded = false;
 }
