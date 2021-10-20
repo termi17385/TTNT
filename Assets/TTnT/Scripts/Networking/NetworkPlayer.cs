@@ -28,10 +28,24 @@ namespace TTnT.Scripts.Networking
             }
         }
 
+        // This is run via the network starting and the player connecting...
+        // NOT Unity
+        // It is run when the object is spawned via the networking system NOT when Unity
+        // instantiates the object
         public override void OnStartClient()
         {
+            // This will run REGARDLESS if we are the local or remote player
+            // isLocalPlayer is true if this object is the client's local player otherwise it's false
             PlayerController controller = gameObject.GetComponent<PlayerController>();
             controller.enabled = isLocalPlayer;
+            
+            CustomNetworkManager.AddPlayer(this);
         }
+
+        public override void OnStopClient()
+        {
+            CustomNetworkManager.RemovePlayer(this);
+        }
+
     }
 }

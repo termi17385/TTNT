@@ -745,7 +745,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551f3ec8e01f0e04ca7227094008f12c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookatCamera: {fileID: 2961484670792020997}
+  target: {fileID: 0}
+  localPlayer: {fileID: 0}
 --- !u!1 &1271136419
 GameObject:
   m_ObjectHideFlags: 0
@@ -2282,7 +2283,7 @@ MonoBehaviour:
   cam: {fileID: 2961484670792021002}
   mouseLook: {fileID: 2961484671592255345}
   canvas: {fileID: 1271136423}
-  followCam: {fileID: 4800649333906984781}
+  target: {fileID: 0}
   selfUI: {fileID: 1234564191}
 --- !u!114 &5116062765267244228
 MonoBehaviour:
