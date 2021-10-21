@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using UnityEngine;
 using Mirror;
-using TTnT.Scripts.Networking;
 
-	public class CustomNetworkManager : NetworkManager
+using NetworkPlayer = TTnT.Scripts.Networking.NetworkPlayer;
+public class CustomNetworkManager : NetworkManager
 	{
 		/// <summary>
 		/// A reference to the CustomNetworkManager version of the singleton
@@ -91,5 +92,24 @@ using TTnT.Scripts.Networking;
 			IsHost = false;
 		}
 
-    
+		// Added in by josh 21.10.2021
+		public override void OnStartServer()
+		{
+			Debug.Log("Server Started!");
+		}
+
+		public override void OnStopServer()
+		{
+			Debug.Log("Server Stopped!");
+		}
+
+		public override void OnClientConnect(NetworkConnection _conn)
+		{
+			Debug.Log($"{_conn} Connected to Server!");
+		}
+
+		public override void OnClientDisconnect(NetworkConnection _conn)
+		{
+			Debug.Log($"{_conn} Disconnected from Server!");
+		}
 	}
