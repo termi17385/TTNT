@@ -54,10 +54,18 @@ namespace TTnT.Scripts
 					{
 						gunSound.Play();
 						var remotePlayerID = hit.collider.GetComponent<NetworkIdentity>().netId;
+						CmdHitTarget(remotePlayerID);
 						Debug.Log($"Player {hit.collider.gameObject.name} {remotePlayerID} hit!");
 					}
 				}
 			}
+		}
+
+		[Command]
+		public void CmdHitTarget(uint _id)
+		{
+			var getTarget = CustomNetworkManager.FindPlayer(_id).GetComponent<NetworkPlayerManager>();
+			getTarget.RpcTakeDamage(damage);
 		}
 	}
 }
