@@ -17,7 +17,8 @@ public enum StatType
 {
     Health,
     Stamina,
-    Ammo
+    Ammo,
+    Time
 }
 
 public class UIManager : MonoBehaviour
@@ -50,6 +51,7 @@ public class UIManager : MonoBehaviour
             case StatType.Health:  text = textHealth; image = barHealth; break;
             case StatType.Stamina: text = textStamina; image = barStamina; break;
             case StatType.Ammo:    text = textAmmo; image = barAmmo; break;
+            case StatType.Time:    text = textTime; image = clock; break;
             default:               throw new ArgumentOutOfRangeException(nameof(_statType), _statType, null);
         }
         
