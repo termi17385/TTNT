@@ -12,12 +12,11 @@ namespace TTnT.Scripts.Networking
     {
         #region Disable if not local player
         [SerializeField] private MouseLook mouseLook;
-        [SerializeField] private Camera cam, gunCamera;
+        [SerializeField] private Camera cam;
         [SerializeField] private Canvas canvas;
         [SerializeField] private GunTest gun;
         [SerializeField] private AudioListener listener;
         [SerializeField] private AudioSource[] gunAudioSources;
-        [SerializeField] private GameObject[] resetLayers;
 
         [SerializeField] private readonly string remotePlayerName = "RemotePlayer";
         #endregion
@@ -32,17 +31,12 @@ namespace TTnT.Scripts.Networking
             else
             {
                 cam.enabled = false;
-                gunCamera.gameObject.SetActive(false);
-                
                 canvas.enabled = false;
                 mouseLook.enabled = false;
                 gun.enabled = false;
                 listener.enabled = false;
-                
                 foreach(var audioSource in gunAudioSources) audioSource.enabled = false;
                 foreach(Transform child in gameObject.transform) child.gameObject.layer = LayerMask.NameToLayer(remotePlayerName);
-                foreach(var obj in resetLayers) obj.layer = LayerMask.NameToLayer(remotePlayerName);
-                
                 gameObject.layer = LayerMask.NameToLayer(remotePlayerName);
             }
         }
