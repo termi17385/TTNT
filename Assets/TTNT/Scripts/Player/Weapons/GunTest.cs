@@ -74,9 +74,8 @@ namespace TTnT.Scripts
 				Vector3 rayOrigin = cam.ViewportToWorldPoint(new Vector3(.5f, .5f, 0));
 				RaycastHit hit;
 				//playerManager.CmdStartParticles(); 
-				muzzleFlash.Play();
-				shootSound.Play();
 				
+				OnShoot();
 				// shoot the target
 				if(Physics.Raycast(rayOrigin, cam.transform.forward, out hit, weaponRange, ignorePlayer))
 				{
@@ -96,6 +95,19 @@ namespace TTnT.Scripts
 		{
 			var getTarget = CustomNetworkManager.FindPlayer(_id).GetComponent<NetworkPlayerManager>();
 			getTarget.RpcTakeDamage(damage);
+		}
+
+		[Command]
+		private void OnShoot()
+		{
+			RpcEffect();
+		}
+		
+		[ClientRpc]
+		public void RpcEffect()
+		{
+			muzzleFlash.Play();
+			shootSound.Play();
 		}
 	}
 }
