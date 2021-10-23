@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9c14f01c-6bc1-49e7-b23e-dd7157f7ea52" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TTNT/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TTNT/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Manager/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0-prev.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker0-prev.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker1.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Handgun.unitypackage" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scenes/FPS testing.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scenes/FPS testing.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Player/Weapons/GunTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Player/Weapons/GunTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +83,7 @@
       <workItem from="1634691064386" duration="5669000" />
       <workItem from="1634793924552" duration="11478000" />
       <workItem from="1634876040929" duration="10317000" />
-      <workItem from="1634890778505" duration="2546000" />
+      <workItem from="1634978593066" duration="1404000" />
     </task>
     <task id="LOCAL-00001" summary="Mouse Fixed?">
       <created>1634436518760</created>
