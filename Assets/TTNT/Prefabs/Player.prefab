@@ -2847,7 +2847,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   damage: 10
-  fireRate: 0.1
+  fireRate: 0.15
   weaponRange: 50
   cam: {fileID: 2961484670792021002}
   gunEnd: {fileID: 8304350843248409703}
