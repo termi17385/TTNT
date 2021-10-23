@@ -17,6 +17,9 @@ Logs/AssetImportWorker0.log
 -srvPort
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 9e4654b (Stuff)
 =======
 >>>>>>> parent of 9e4654b (Stuff)
 54361
@@ -25,6 +28,7 @@ E:/UnityProject/GitHubFiles/TTNT
 Using Asset Import Pipeline V2.
 Refreshing native plugins compatible for Editor in 91.76 ms, found 0 plugins.
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 57379
 Successfully changed project path to: E:/UnityProject/GitHubFiles/TTNT
@@ -32,6 +36,8 @@ E:/UnityProject/GitHubFiles/TTNT
 Using Asset Import Pipeline V2.
 Refreshing native plugins compatible for Editor in 64.70 ms, found 0 plugins.
 >>>>>>> parent of 56aa6b6 (Added Handgun model and unpacked the character)
+=======
+>>>>>>> parent of 9e4654b (Stuff)
 =======
 >>>>>>> parent of 9e4654b (Stuff)
 Preloading 0 native plugins for Editor in 0.00 ms.
@@ -49,6 +55,7 @@ Initialize mono
 Mono path[0] = 'C:/Users/Josh/Documents/Unity/Editors/2020.2.2f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Users/Josh/Documents/Unity/Editors/2020.2.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Users/Josh/Documents/Unity/Editors/2020.2.2f1/Editor/Data/MonoBleedingEdge/etc'
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56488
@@ -1186,6 +1193,10 @@ Begin MonoManager ReloadAssembly
 =======
 Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56488
 Begin MonoManager ReloadAssembly
+=======
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56488
+Begin MonoManager ReloadAssembly
+>>>>>>> parent of 9e4654b (Stuff)
 Registering precompiled unity dll's ...
 Register platform support module: C:/Users/Josh/Documents/Unity/Editors/2020.2.2f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Users/Josh/Documents/Unity/Editors/2020.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
@@ -1951,6 +1962,9 @@ Received Prepare
 Registering precompiled user dll's ...
 Registered in 0.002923 seconds.
 Begin MonoManager ReloadAssembly
+<<<<<<< HEAD
+>>>>>>> parent of 9e4654b (Stuff)
+=======
 >>>>>>> parent of 9e4654b (Stuff)
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
@@ -1971,6 +1985,9 @@ RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 9e4654b (Stuff)
 =======
 >>>>>>> parent of 9e4654b (Stuff)
 - Completed reload, in  1.478 seconds
@@ -5608,6 +5625,7 @@ C:\WINDOWS\SYSTEM32\dbghelp.dll:dbghelp.dll (00007FFE460A0000), size: 1982464 (r
 A crash has been intercepted by the crash handler. For call stack and other details, see the latest crash report generated in:
  * C:/Users/Josh/AppData/Local/Temp/Unity/Editor/Crashes
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 - Completed reload, in  2.018 seconds
 Platform modules already initialized, skipping
@@ -5621,5 +5639,7 @@ Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2217.
 Total: 3.104400 ms (FindLiveObjects: 0.304900 ms CreateObjectMapping: 0.130800 ms MarkObjects: 2.546100 ms  DeleteObjects: 0.120700 ms)
 
 >>>>>>> parent of 56aa6b6 (Added Handgun model and unpacked the character)
+=======
+>>>>>>> parent of 9e4654b (Stuff)
 =======
 >>>>>>> parent of 9e4654b (Stuff)
