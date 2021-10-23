@@ -6,6 +6,13 @@ using UnityEngine;
 
 namespace TTnT.Scripts
 {
+	public enum ShootMode
+	{
+		SemiAuto,
+		FullAuto
+		//BurstAuto,
+	}
+	
 	public class GunTest : NetworkBehaviour
 	{
 		[Header("Base Variables")]
@@ -21,22 +28,46 @@ namespace TTnT.Scripts
 		[SerializeField] private AudioSource gunSound, shootSound;
 		[SerializeField] private LayerMask ignorePlayer;
 		[SerializeField] private NetworkPlayerManager playerManager;
+
 		private float nextFire;
+		private ShootMode shootMode = ShootMode.SemiAuto;
 
 		private void Start()
 		{
 			playerManager = GetComponent<NetworkPlayerManager>();
 		}
 
+		private int count = 0;
+		private bool shootModeBool;
 		private void Update()
 		{
-			Shoot();
+			if(isLocalPlayer)
+			{
+				if(Input.GetKeyDown(KeyCode.X))
+				{
+					count++;
+					if(count > 1) count = 0;
+					shootMode = (ShootMode)count;
+				}
+			}
+			
+			var semi = Input.GetKeyDown(KeyCode.Mouse0);
+			var auto = Input.GetKey(KeyCode.Mouse0);
+
+			shootModeBool = shootMode switch
+			{
+				ShootMode.SemiAuto => semi,
+				ShootMode.FullAuto => auto,
+				_                  => shootModeBool
+			};
+			
+			if(isLocalPlayer && shootModeBool && Time.time > nextFire) Shoot();
 		} 
 
 		public void Shoot()
 		{
 			// if mouse is pressed and the time between shots is higher then next fire
-			if(isLocalPlayer && Input.GetKeyDown(KeyCode.Mouse0) && Time.time > nextFire)
+			//if(isLocalPlayer)// && Input.GetKeyDown(KeyCode.Mouse0) && Time.time > nextFire)
 			{
 				// set the next fire
 				nextFire = Time.time + fireRate;

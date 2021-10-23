@@ -36,19 +36,16 @@ namespace TTnT.Scripts
 
 		private void Start()
 		{
-			//if(isLocalPlayer) CmdSetHealth();
-			RpcSetHealth();
-
 			isDead = false;
 			if(isLocalPlayer)
 			{
 				SetStamina();
+
+				health = MAX_HEALTH;
+				stamina = MAX_STAMINA;
 				
 				cController = GetComponent<CharacterController>();
 				mLook = GetComponent<MouseLook>();
-				
-				uiManager.DisplayStat(health, MAX_HEALTH, StatType.Health);
-				uiManager.DisplayStat(stamina, MAX_STAMINA, StatType.Stamina);
 			}
 			else if (!isLocalPlayer)
 			{
@@ -56,15 +53,23 @@ namespace TTnT.Scripts
 			}
 		}
 
-		private void Update()
+		private void LateUpdate()
 		{
-			if(isLocalPlayer) uiManager.DisplayStat(health, MAX_HEALTH, StatType.Health);
+			if(isLocalPlayer) DisplayStatsAtRuntime();
 		}
 
+		[Client]
+		private void DisplayStatsAtRuntime()
+		{
+			uiManager.DisplayStat(health, MAX_HEALTH, StatType.Health);
+			uiManager.DisplayStat(stamina, MAX_STAMINA, StatType.Stamina);
+		}
+			
+		
 		// todo: this needs to be handled better and changed
 		private void OnHealthChange(float _old, float _new)
 		{
-			RpcUpdateHealth(_new);
+			if(isLocalPlayer)CmdUpdateHealth(_new);
 		}
 		
 		// todo: when rigged models are obtained redo this method properly
@@ -89,8 +94,20 @@ namespace TTnT.Scripts
 				cController.enabled = true;
 				pController.isDead = false;
 				
-				RpcSetHealth();
+				if(isLocalPlayer)CmdSetHealthOnRespawn();
 			}
+		}
+
+		[Command]
+		private void CmdSetHealthOnRespawn()
+		{
+			RpcSetHealth();
+		}
+
+		[Command]
+		private void CmdUpdateHealth(float _new)
+		{
+			RpcUpdateHealth(_new);
 		}
 
 		// todo: this needs to be handled better and changed
@@ -140,7 +157,7 @@ namespace TTnT.Scripts
 			if(health <= 0)
 			{
 				health = 0;
-				CmdPlayerStatus(true);
+				if(isLocalPlayer)CmdPlayerStatus(true);
 			}
 		}
 
