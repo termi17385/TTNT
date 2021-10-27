@@ -11,6 +11,8 @@ public class CustomNetworkManager : NetworkManager
 		/// </summary>
 		public static CustomNetworkManager Instance => singleton as CustomNetworkManager;
 
+		public GameManager gameManager;
+
 		[CanBeNull]
 		public static NetworkPlayer FindPlayer(uint _id)
 		{
@@ -103,10 +105,11 @@ public class CustomNetworkManager : NetworkManager
 			Debug.Log("Server Stopped!");
 		}
 
-		public override void OnClientConnect(NetworkConnection _conn)
+		/*public override void OnClientConnect(NetworkConnection _conn)
 		{
 			Debug.Log($"{_conn} Connected to Server!");
-		}
+			gameManager.connectedPlayer.Add(_conn.identity.gameObject);
+		}*/
 
 		public override void OnClientDisconnect(NetworkConnection _conn)
 		{
