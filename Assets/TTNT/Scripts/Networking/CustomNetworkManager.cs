@@ -3,28 +3,15 @@ using JetBrains.Annotations;
 using UnityEngine;
 using Mirror;
 
-using System;
-using System.Linq;
-
-using TTnT.Scripts.Networking;
-
-using Unity.Mathematics;
-
 using NetworkPlayer = TTnT.Scripts.Networking.NetworkPlayer;
-using Object = UnityEngine.Object;
-
 public class CustomNetworkManager : NetworkManager
-{
-		public List<Transform> weaponPoints = new List<Transform>();
-		public List<Transform> ammoPoints = new List<Transform>();
-		
-		[SerializeField] SpawnPointManager spawner;
-		private new int startPositionIndex;
-
+	{
 		/// <summary>
 		/// A reference to the CustomNetworkManager version of the singleton
 		/// </summary>
 		public static CustomNetworkManager Instance => singleton as CustomNetworkManager;
+
+		public GameManager gameManager;
 
 		[CanBeNull]
 		public static NetworkPlayer FindPlayer(uint _id)
@@ -44,49 +31,6 @@ public class CustomNetworkManager : NetworkManager
 		/// </summary>
 		/// <param name="_player"></param>
 		public static void RemovePlayer([NotNull] NetworkPlayer _player) => Instance.players.Remove(_player.netId);
-
-		public void RegisterSpawnPoint(Transform _point, SpawnType _type)
-		{
-			switch(_type)
-			{
-				case SpawnType.Weapon: weaponPoints.Add(_point); weaponPoints = weaponPoints.OrderBy(_transform => _transform.GetSiblingIndex()).ToList(); break;
-				case SpawnType.Ammo: ammoPoints.Add(_point); ammoPoints = ammoPoints.OrderBy(_transform => _transform.GetSiblingIndex()).ToList(); break;
-			}
-		}
-		
-		public void UnRegisterSpawnPoint(Transform _point,  SpawnType _type)
-		{
-			switch(_type)
-			{
-				case SpawnType.Weapon: weaponPoints.Remove(_point); break;
-				case SpawnType.Ammo: ammoPoints.Remove(_point); break;
-			}
-		}
-
-		public Transform GetSpawnPoint(SpawnType _type)
-		{
-			switch(_type)
-			{
-				case SpawnType.Weapon: weaponPoints.RemoveAll(t => t == null);
-					if (weaponPoints.Count == 0) return null;
-					
-					Transform weaponStartPos = weaponPoints[startPositionIndex];
-					startPositionIndex = (startPositionIndex + 1) % weaponPoints.Count;
-					
-					return weaponStartPos;
-				
-				case SpawnType.Ammo: ammoPoints.RemoveAll(t => t == null);
-					if (ammoPoints.Count == 0) return null;
-					
-					Transform ammoStartPos = ammoPoints[startPositionIndex];
-					startPositionIndex = (startPositionIndex + 1) % ammoPoints.Count;
-					
-					return ammoStartPos;
-			}
-
-			Debug.LogException(new Exception("Invalid Spawn Type"));
-			return null;
-		}
 
 		/// <summary>
 		/// A reference to the localplayer of the game
@@ -131,8 +75,6 @@ public class CustomNetworkManager : NetworkManager
 		/// </summary>
 		private readonly Dictionary<uint, NetworkPlayer> players = new Dictionary<uint, NetworkPlayer>();
 
-		
-
 		/// <summary>
 		/// This is invoked when a host is started.
 		/// <para>StartHost has multiple signatures, but they all cause this hook to be called.</para>
@@ -142,7 +84,6 @@ public class CustomNetworkManager : NetworkManager
 			IsHost = true;
 			// This makes in visible on the network
 			discovery.AdvertiseServer();
-			StartCoroutine(spawner.SpawnItemsOnServerStart());
 		}
 
 		/// <summary>
@@ -157,12 +98,21 @@ public class CustomNetworkManager : NetworkManager
 		public override void OnStartServer()
 		{
 			Debug.Log("Server Started!");
-			
-			NetworkServer.SpawnObjects();
 		}
 
 		public override void OnStopServer()
 		{
 			Debug.Log("Server Stopped!");
+		}
+
+		/*public override void OnClientConnect(NetworkConnection _conn)
+		{
+			Debug.Log($"{_conn} Connected to Server!");
+			gameManager.connectedPlayer.Add(_conn.identity.gameObject);
+		}*/
+
+		public override void OnClientDisconnect(NetworkConnection _conn)
+		{
+			Debug.Log($"{_conn} Disconnected from Server!");
 		}
 	}

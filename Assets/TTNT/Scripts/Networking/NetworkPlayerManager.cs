@@ -5,7 +5,7 @@ using Mirror;
 using System;
 
 using TMPro;
-
+using TTNT.Scripts.Manager;
 using UnityEngine;
 
 
@@ -26,7 +26,7 @@ namespace TTnT.Scripts
 		[Space]
 		[SerializeField] private CharacterController cController;
 		[SerializeField] private PlayerController pController;
-		[SerializeField] private UIManager uiManager;
+		[SerializeField] public UIManager uiManager;
 		
 		public TextMesh healthText;
 		

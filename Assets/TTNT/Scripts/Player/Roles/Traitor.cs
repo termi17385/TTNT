@@ -1,19 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Traitor : MonoBehaviour
+namespace TTNT.Scripts.Player.Roles
 {
-    // ADD STUFF THAT OPENS TRAITOR INFO PAGE WHEN STARTING
-    // Start is called before the first frame update
-    void Start()
+    public class Traitor : BaseRole
     {
+        // ADD STUFF THAT OPENS TRAITOR INFO PAGE WHEN STARTING
+        // Start is called before the first frame update
+        void Start()
+        {
         
-    }
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
         
+        }
     }
 }
