@@ -18,7 +18,7 @@ namespace TTnT.Scripts
 		public float stamina;
 		
 		[Space] [SyncVar(hook = nameof(OnPlayerKilled))] public bool isDead;
-		
+
 		[Header("Arrays of data to disable on death")]
 		[SerializeField] private GameObject[] objectsToHide;
 		[SerializeField] private Behaviour[] componentsToHide;

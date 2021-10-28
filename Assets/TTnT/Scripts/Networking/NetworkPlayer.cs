@@ -24,12 +24,20 @@ namespace TTnT.Scripts.Networking
 
         private void Start()
         {
+            //if(NetworkServer.active) CmdSpawnIdentities();
+            if(isServer)
+            {
+                //CmdSpawnIdentities();
+            }
+
             if (isLocalPlayer)
             {
                 selfUI.SetActive(false);
+                CmdSpawnIdentities();
             }
             else
             {
+                            
                 cam.enabled = false;
                 canvas.enabled = false;
                 mouseLook.enabled = false;
@@ -61,6 +69,12 @@ namespace TTnT.Scripts.Networking
             CustomNetworkManager.AddPlayer(this);
         }
 
+        [Command]
+        public void CmdSpawnIdentities()
+        {
+            NetworkServer.SpawnObjects();
+        }
+        
         public override void OnStopClient()
         {
             CustomNetworkManager.RemovePlayer(this);

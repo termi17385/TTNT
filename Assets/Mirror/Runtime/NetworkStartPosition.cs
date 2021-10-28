@@ -8,12 +8,12 @@ namespace Mirror
     [HelpURL("https://mirror-networking.gitbook.io/docs/components/network-start-position")]
     public class NetworkStartPosition : MonoBehaviour
     {
-        public void Awake()
+        public virtual void Awake()
         {
             NetworkManager.RegisterStartPosition(transform);
         }
 
-        public void OnDestroy()
+        public virtual void OnDestroy()
         {
             NetworkManager.UnRegisterStartPosition(transform);
         }
