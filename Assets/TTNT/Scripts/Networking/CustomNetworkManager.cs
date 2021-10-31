@@ -105,11 +105,12 @@ public class CustomNetworkManager : NetworkManager
 			Debug.Log("Server Stopped!");
 		}
 
-		/*public override void OnClientConnect(NetworkConnection _conn)
+		public override void OnClientConnect(NetworkConnection _conn)
 		{
+			base.OnClientConnect(_conn);
 			Debug.Log($"{_conn} Connected to Server!");
-			gameManager.connectedPlayer.Add(_conn.identity.gameObject);
-		}*/
+			//gameManager.connectedPlayer.Add(_conn.identity.gameObject);
+		}
 
 		public override void OnClientDisconnect(NetworkConnection _conn)
 		{
