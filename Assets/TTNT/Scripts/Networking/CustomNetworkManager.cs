@@ -3,9 +3,20 @@ using JetBrains.Annotations;
 using UnityEngine;
 using Mirror;
 
+using System;
+using System.Linq;
+
+using TTnT.Scripts.Networking;
+
 using NetworkPlayer = TTnT.Scripts.Networking.NetworkPlayer;
 public class CustomNetworkManager : NetworkManager
 	{
+		public List<Transform> weaponPoints = new List<Transform>();
+		public List<Transform> ammoPoints = new List<Transform>();
+
+		[SerializeField] SpawnPointManager spawner;
+		private new int startPositionIndex;
+		
 		/// <summary>
 		/// A reference to the CustomNetworkManager version of the singleton
 		/// </summary>
@@ -98,6 +109,7 @@ public class CustomNetworkManager : NetworkManager
 		public override void OnStartServer()
 		{
 			Debug.Log("Server Started!");
+			StartCoroutine(spawner.SpawnItemsOnServerStart());
 		}
 
 		public override void OnStopServer()
@@ -114,5 +126,48 @@ public class CustomNetworkManager : NetworkManager
 		public override void OnClientDisconnect(NetworkConnection _conn)
 		{
 			Debug.Log($"{_conn} Disconnected from Server!");
+		}
+		
+		public void RegisterSpawnPoint(Transform _point, SpawnType _type)
+		{
+			switch(_type)
+			{
+				case SpawnType.Weapon: weaponPoints.Add(_point); weaponPoints = weaponPoints.OrderBy(_transform => _transform.GetSiblingIndex()).ToList(); break;
+				case SpawnType.Ammo:   ammoPoints.Add(_point); ammoPoints = ammoPoints.OrderBy(_transform => _transform.GetSiblingIndex()).ToList(); break;
+			}
+		}
+
+		public void UnRegisterSpawnPoint(Transform _point,  SpawnType _type)
+		{
+			switch(_type)
+			{
+				case SpawnType.Weapon: weaponPoints.Remove(_point); break;
+				case SpawnType.Ammo:   ammoPoints.Remove(_point); break;
+			}
+		}
+
+		public Transform GetSpawnPoint(SpawnType _type)
+		{
+			switch(_type)
+			{
+				case SpawnType.Weapon: weaponPoints.RemoveAll(t => t == null);
+					if (weaponPoints.Count == 0) return null;
+
+					Transform weaponStartPos = weaponPoints[startPositionIndex];
+					startPositionIndex = (startPositionIndex + 1) % weaponPoints.Count;
+
+					return weaponStartPos;
+
+				case SpawnType.Ammo: ammoPoints.RemoveAll(t => t == null);
+					if (ammoPoints.Count == 0) return null;
+
+					Transform ammoStartPos = ammoPoints[startPositionIndex];
+					startPositionIndex = (startPositionIndex + 1) % ammoPoints.Count;
+
+					return ammoStartPos;
+			}
+
+			Debug.LogException(new Exception("Invalid Spawn Type"));
+			return null;
 		}
 	}

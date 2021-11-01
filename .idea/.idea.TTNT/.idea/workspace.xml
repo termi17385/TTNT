@@ -2,25 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c14f01c-6bc1-49e7-b23e-dd7157f7ea52" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Player/Roles/BaseRole.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TTNT/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TTNT/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Art/Models/Handgun.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scenes/Offline.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scenes/Offline.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Manager/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Manager/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Manager/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Networking/CustomNetworkDiscovery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Networking/CustomNetworkDiscovery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Art/First_Person_Animations/Mat/PlayerMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Art/First_Person_Animations/Mat/PlayerMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scenes/FPS testing.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scenes/FPS testing.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Networking/CustomNetworkManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Networking/CustomNetworkManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Networking/NetworkPlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Networking/NetworkPlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Player/Roles/Detective.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Player/Roles/Detective.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Player/Roles/Innocent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Player/Roles/Innocent.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Player/Roles/BaseRole.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Player/Roles/RoleAssigner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Player/Roles/RoleAssigner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Player/Roles/Traitor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Player/Roles/Traitor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0-prev.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker0-prev.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker1-prev.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker4-prev.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker5-prev.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker6-prev.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker7-prev.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +32,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/TTNT/Scripts/Networking/CustomNetworkDiscovery.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82ec470c913149358ad0c83ad628910c13a000/b1/efa14ac9/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/TTNT/Scripts/Networking/NetworkMatchManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1zR4sQPsserk6aY9JYP1LyYR74j" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -107,6 +97,7 @@
       <workItem from="1634876040929" duration="10317000" />
       <workItem from="1634978593066" duration="1404000" />
       <workItem from="1635295117119" duration="13549000" />
+      <workItem from="1635399889332" duration="801000" />
     </task>
     <task id="LOCAL-00001" summary="Mouse Fixed?">
       <created>1634436518760</created>
