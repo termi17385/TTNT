@@ -109,12 +109,19 @@ public class CustomNetworkManager : NetworkManager
 		public override void OnStartServer()
 		{
 			Debug.Log("Server Started!");
-			StartCoroutine(spawner.SpawnItemsOnServerStart());
+			//StartCoroutine(spawner.SpawnItemsOnServerStart());
 		}
 
 		public override void OnStopServer()
 		{
 			Debug.Log("Server Stopped!");
+		}
+
+		public override void OnServerAddPlayer(NetworkConnection conn)
+		{
+			base.OnServerAddPlayer(conn);
+			//if(numPlayers == 1) StartCoroutine(spawner.SpawnItemsOnServerStart());
+			//else NetworkServer.SpawnObjects();
 		}
 
 		/*public override void OnClientConnect(NetworkConnection _conn)
@@ -123,10 +130,10 @@ public class CustomNetworkManager : NetworkManager
 			gameManager.connectedPlayer.Add(_conn.identity.gameObject);
 		}*/
 
-		public override void OnClientDisconnect(NetworkConnection _conn)
-		{
-			Debug.Log($"{_conn} Disconnected from Server!");
-		}
+		// public override void OnClientDisconnect(NetworkConnection _conn)
+		// {
+		// 	Debug.Log($"{_conn} Disconnected from Server!");
+		// }
 		
 		public void RegisterSpawnPoint(Transform _point, SpawnType _type)
 		{

@@ -296,7 +296,6 @@ GameObject:
   - component: {fileID: 728924062}
   - component: {fileID: 728924066}
   - component: {fileID: 728924067}
-  - component: {fileID: 728924068}
   m_Layer: 0
   m_Name: Network Manager
   m_TagString: Untagged
@@ -383,7 +382,8 @@ MonoBehaviour:
   - {fileID: 3384048800246092472, guid: 21cb264e50324ed47a111ec42b306dcd, type: 3}
   weaponPoints: []
   ammoPoints: []
-  spawner: {fileID: 728924068}
+  spawner: {fileID: 0}
+  gameManager: {fileID: 0}
   discovery: {fileID: 728924062}
 --- !u!4 &728924065
 Transform:
@@ -426,23 +426,6 @@ MonoBehaviour:
   showGUI: 1
   offsetX: 0
   offsetY: 0
---- !u!114 &728924068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 728924061}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9b49b4d77a6c204a8fd332e2e4d25de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponPaths:
-  - Weapons/Weapon
-  - Weapons/Weapon - 2
-  ammoPaths:
-  - Ammo/AmmoBox
 --- !u!1 &1603735419
 GameObject:
   m_ObjectHideFlags: 0

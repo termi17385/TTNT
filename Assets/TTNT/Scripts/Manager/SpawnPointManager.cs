@@ -15,10 +15,10 @@ public class SpawnPointManager : MonoBehaviour
 	public IEnumerator SpawnItemsOnServerStart()
 	{
 		yield return new WaitForSeconds(2);
-		CmdSpawnObjects();
+		SpawnObjects();
 	}
 	
-	public void CmdSpawnObjects()
+	public void SpawnObjects()
 	{
 		var pointCount = (CustomNetworkManager.Instance.weaponPoints.Count * 2);
 		var pointCountAmmo = CustomNetworkManager.Instance.ammoPoints.Count;

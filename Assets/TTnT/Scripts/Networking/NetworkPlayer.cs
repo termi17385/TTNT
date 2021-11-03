@@ -2,6 +2,8 @@ using Mirror;
 
 using System;
 
+using TTNT.Scripts.Player.Roles;
+
 using UnityEngine;
 using UnityEngine.Serialization;
 
