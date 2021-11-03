@@ -7,7 +7,7 @@ using System;
 using System.Linq;
 
 using TTnT.Scripts.Networking;
-
+using TTNT.Scripts.Networking;
 using NetworkPlayer = TTnT.Scripts.Networking.NetworkPlayer;
 public class CustomNetworkManager : NetworkManager
 	{
@@ -15,7 +15,10 @@ public class CustomNetworkManager : NetworkManager
 		public List<Transform> ammoPoints = new List<Transform>();
 
 		[SerializeField] SpawnPointManager spawner;
+		[SerializeField] private NetworkMatchManager matchManager;
+		
 		private new int startPositionIndex;
+		
 		
 		/// <summary>
 		/// A reference to the CustomNetworkManager version of the singleton
@@ -107,6 +110,7 @@ public class CustomNetworkManager : NetworkManager
 		public override void OnStartServer()
 		{
 			Debug.Log("Server Started!");
+			matchManager.enabled = true;
 			//StartCoroutine(spawner.SpawnItemsOnServerStart());
 		}
 

@@ -20,7 +20,7 @@ public class NetworkCharacter : NetworkBehaviour
 	[SerializeField] private Behaviour[] componentsToDisable;
 	[SerializeField] private GameObject hitIndicator;
 	[SerializeField] private GameObject[] hideArms;
-	[SerializeField] private UIManager uiManager;
+	public UIManager uiManager;
 	[SerializeField] private GameObject body;
 	
 	private string remotePlayerName = "RemotePlayer";

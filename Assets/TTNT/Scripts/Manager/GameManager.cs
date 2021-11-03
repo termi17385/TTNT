@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Mirror;
 using TTNT.Scripts.Manager;
 using TTNT.Scripts.Networking;
@@ -31,5 +32,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-    
+    public List<NetworkIdentity> GetPlayerIdentities()
+    {
+        Dictionary<NetworkIdentity, string>.KeyCollection keys = connectedPlayer.Keys;
+        return keys.ToList();
+    }
 }
