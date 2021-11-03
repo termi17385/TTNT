@@ -6,19 +6,13 @@ using UnityEngine;
 
 namespace TTnT.Scripts
 {
-	public enum ShootMode
-    {
-    	SemiAuto,
-    	FullAuto
-    	//BurstAuto,
-    }
-
 	public class GunTest : NetworkBehaviour
 	{
 		[Header("Base Variables")]
 		[SerializeField] private int damage = 10;
 		[SerializeField] private float fireRate = .25f;
 		[SerializeField] private float weaponRange = 50f;
+		[SerializeField] private float spread = .02f;
 		//[SerializeField] private float hitForce = 100f;
 		
 		[Header("Additional Variables")]
@@ -29,17 +23,18 @@ namespace TTnT.Scripts
 		[SerializeField] private LayerMask ignorePlayer;
 		[SerializeField] private NetworkPlayerManager playerManager;
 		
-		private ShootMode shootMode = ShootMode.SemiAuto;
+		//private ShootMode shootMode = ShootMode.SemiAuto;
 		private float nextFire;
 
 		private void Start()
 		{
 			playerManager = GetComponent<NetworkPlayerManager>();
+			spread = 0.05f;
 		}
 
 		private int count = 0;
 		private bool shootModeBool;
-		private void Update()
+		/*private void Update()
 		{
 			if(isLocalPlayer)
 			{
@@ -62,7 +57,7 @@ namespace TTnT.Scripts
 			};
             			
 			if(isLocalPlayer && shootModeBool && Time.time > nextFire) Shoot();
-		} 
+		} */
 
 		public void Shoot()
 		{
@@ -74,10 +69,27 @@ namespace TTnT.Scripts
 				Vector3 rayOrigin = cam.ViewportToWorldPoint(new Vector3(.5f, .5f, 0));
 				RaycastHit hit;
 				//playerManager.CmdStartParticles(); 
+
+				// the direction to go in
+				var forwardVector = Vector3.forward;
+				// how much of a deviation
+				float deviation = Random.Range(0f, spread);
+				// random angle
+				float angle = Random.Range(0f, 360f);
 				
+				// sets the deviation
+				forwardVector = Quaternion.AngleAxis(deviation, Vector3.up) * forwardVector;
+				// then rotates as well as adds the deviation
+				forwardVector = Quaternion.AngleAxis(angle, Vector3.forward) * forwardVector;
+				// sets the forward dir
+				forwardVector = cam.transform.rotation * forwardVector;
+
+
+
 				OnShoot();
+				Debug.DrawRay(rayOrigin, forwardVector, Color.green, .5f);
 				// shoot the target
-				if(Physics.Raycast(rayOrigin, cam.transform.forward, out hit, weaponRange, ignorePlayer))
+				if(Physics.Raycast(rayOrigin, forwardVector, out hit, weaponRange, ignorePlayer))
 				{
 					if(hit.collider.CompareTag("Player"))
 					{
