@@ -120,6 +120,7 @@ public class CustomNetworkManager : NetworkManager
 		public override void OnServerAddPlayer(NetworkConnection conn)
 		{
 			base.OnServerAddPlayer(conn);
+			gameManager.connectedPlayer.Add(conn.identity, conn.identity.name);
 			//if(numPlayers == 1) StartCoroutine(spawner.SpawnItemsOnServerStart());
 			//else NetworkServer.SpawnObjects();
 		}
