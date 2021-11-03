@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 44e6d17c045462243bc4560889513ad0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - assaultrifle: {fileID: 9100000, guid: d329a8d11ec85bb41813a2c941dda116, type: 2}
+  - handgun: {fileID: 9100000, guid: 8ec3f711dba0fc649b867335373fb554, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
