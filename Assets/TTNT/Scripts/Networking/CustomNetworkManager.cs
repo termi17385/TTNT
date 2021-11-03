@@ -22,8 +22,6 @@ public class CustomNetworkManager : NetworkManager
 		/// </summary>
 		public static CustomNetworkManager Instance => singleton as CustomNetworkManager;
 
-		public GameManager gameManager;
-
 		[CanBeNull]
 		public static NetworkCharacter FindPlayer(uint _id)
 		{
@@ -120,7 +118,7 @@ public class CustomNetworkManager : NetworkManager
 		public override void OnServerAddPlayer(NetworkConnection conn)
 		{
 			base.OnServerAddPlayer(conn);
-			gameManager.connectedPlayer.Add(conn.identity, conn.identity.name);
+			GameManager.instance.connectedPlayer.Add(conn.identity, conn.identity.name);
 			//if(numPlayers == 1) StartCoroutine(spawner.SpawnItemsOnServerStart());
 			//else NetworkServer.SpawnObjects();
 		}

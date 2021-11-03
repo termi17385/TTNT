@@ -9,7 +9,6 @@ using NetworkPlayer = TTnT.Scripts.Networking.NetworkPlayer;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
     public Dictionary<NetworkIdentity, string> connectedPlayer = new Dictionary<NetworkIdentity, string>();
     
     // Start is called before the first frame update

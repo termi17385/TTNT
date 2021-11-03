@@ -384,7 +384,7 @@ MonoBehaviour:
   weaponPoints: []
   ammoPoints: []
   spawner: {fileID: 0}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 728924068}
   discovery: {fileID: 728924062}
 --- !u!4 &728924065
 Transform:
@@ -439,8 +439,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deea3e60781347b45b7bd8212903437a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 0}
-  networkMatchManager: {fileID: 0}
 --- !u!1 &1603735419
 GameObject:
   m_ObjectHideFlags: 0
