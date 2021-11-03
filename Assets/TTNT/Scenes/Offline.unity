@@ -297,6 +297,8 @@ GameObject:
   - component: {fileID: 728924066}
   - component: {fileID: 728924067}
   - component: {fileID: 728924068}
+  - component: {fileID: 728924070}
+  - component: {fileID: 728924069}
   m_Layer: 0
   m_Name: Network Manager
   m_TagString: Untagged
@@ -384,7 +386,7 @@ MonoBehaviour:
   weaponPoints: []
   ammoPoints: []
   spawner: {fileID: 0}
-  gameManager: {fileID: 0}
+  matchManager: {fileID: 728924069}
   discovery: {fileID: 728924062}
 --- !u!4 &728924065
 Transform:
@@ -439,8 +441,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deea3e60781347b45b7bd8212903437a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &728924069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728924061}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ec467e5b8a1eaf4ca35e994a193d002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  minutesLeft: 0
+  secondsLeft: 0
   uiManager: {fileID: 0}
-  networkMatchManager: {fileID: 0}
+--- !u!114 &728924070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728924061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 2373669061
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1 &1603735419
 GameObject:
   m_ObjectHideFlags: 0

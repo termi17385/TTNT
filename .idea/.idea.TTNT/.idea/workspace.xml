@@ -3,26 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="9c14f01c-6bc1-49e7-b23e-dd7157f7ea52" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TTNT/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TTNT/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Art/First_Person_Animations/Script/PlayerControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Art/First_Person_Animations/Script/PlayerControls.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Prefabs/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Prefabs/Player.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Prefabs/Player.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scenes/FPS testing.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scenes/FPS testing.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scenes/Offline.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scenes/Offline.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/BaseWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/BaseWeapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Manager/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Networking/CustomNetworkManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Networking/CustomNetworkManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Player/Animations and effects/UIFollowCam.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Player/Animations and effects/UIFollowCam.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Player/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/WeaponManger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/WeaponManger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TTnT/Scripts/Networking/NetworkPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTnT/Scripts/Networking/NetworkPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Networking/NetworkCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Networking/NetworkCharacter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Networking/NetworkMatchManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Networking/NetworkMatchManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TTNT/Scripts/Player/Roles/RoleAssigner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TTNT/Scripts/Player/Roles/RoleAssigner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/ApiUpdaterCheck.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/ApiUpdaterCheck.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0-prev.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker0-prev.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker1-prev.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker2-prev.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker2-prev.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker2.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker3-prev.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker3-prev.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker3.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker1.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker2-prev.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker3-prev.log" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,15 +34,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/TTNT/Scripts/Networking/NetworkCharacter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TTNT/Scripts/Networking/CustomNetworkDiscovery.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TTNT/Scripts/Player/Weapons/PlayerShoot.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1zR4sQPsserk6aY9JYP1LyYR74j" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -120,6 +105,7 @@
       <workItem from="1635757710965" duration="645000" />
       <workItem from="1635849935980" duration="1968000" />
       <workItem from="1635896432576" duration="12740000" />
+      <workItem from="1635915549718" duration="2277000" />
     </task>
     <task id="LOCAL-00001" summary="Mouse Fixed?">
       <created>1634436518760</created>

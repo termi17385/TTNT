@@ -16,8 +16,6 @@ namespace TTNT.Scripts.Player.Roles
         
         public NetworkMatchManager networkMatchManager;
 
-        public GameManager gameManager;
-
         // Start is called before the first frame update
         void Start()
         {
@@ -39,14 +37,14 @@ namespace TTNT.Scripts.Player.Roles
             
             AssignRoles();
 
-            gameManager.StartCoroutine("CountdownTimer");
+            GameManager.instance.StartCoroutine("CountdownTimer");
             
             networkMatchManager.CmdChangeMatchStatus(MatchStatus.InProgress);
         }
 
         public void AssignRoles()
         {
-            List<NetworkIdentity> identities = GetPlayerIdentities();
+            List<NetworkIdentity> identities = GameManager.instance.GetPlayerIdentities();
 
             if (identities.Count < 5) { traitorNumber = 1; }
             else if (identities.Count < 8) { traitorNumber = 2; }
@@ -78,11 +76,5 @@ namespace TTNT.Scripts.Player.Roles
             
         }
 
-        public List<NetworkIdentity> GetPlayerIdentities()
-        {
-            Dictionary<NetworkIdentity, string>.KeyCollection keys = gameManager.connectedPlayer.Keys;
-            return keys.ToList();
-        }
-        
     }
 }

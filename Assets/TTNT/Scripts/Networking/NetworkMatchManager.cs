@@ -17,7 +17,11 @@ namespace TTNT.Scripts.Networking
         [Command]
         public void CmdChangeMatchStatus(MatchStatus _status)
         {
-            RpcChangeMatchStatus(_status);
+            foreach (var player in GameManager.instance.GetPlayerIdentities())
+            {
+                uiManager = player.GetComponent<NetworkCharacter>().uiManager;
+                RpcChangeMatchStatus(_status);
+            }
         }
 
         [ClientRpc]
@@ -26,19 +30,34 @@ namespace TTNT.Scripts.Networking
             uiManager.SetMatchStatus(_status);
         }
 
-        private void Start()
+        private void OnEnable()
         {
-            // Starts the timer
-            StartCoroutine("CountdownTimer");
+            StartCoroutine(WaitForClient());
+            
         }
 
         private void Update()
         {
-            uiManager.DisplayStat(minutesLeft, secondsLeft, StatType.Time);
+            foreach (var player in GameManager.instance.GetPlayerIdentities())
+            {
+                uiManager = player.GetComponent<NetworkCharacter>().uiManager;
+                uiManager.DisplayStat(minutesLeft, secondsLeft, StatType.Time);
+            }
+        }
+
+        IEnumerator WaitForClient()
+        {
+            Debug.Log("Waiting On Client");
+            yield return new WaitForSeconds(1);
+            CmdChangeMatchStatus(MatchStatus.Preparing);
+            minutesLeft = 5;
+            // Starts the timer
+            StartCoroutine("CountdownTimer");
         }
 
         IEnumerable CountdownTimer()
         {
+            Debug.Log("waiting...");
             // Wait a second
             yield return new WaitForSeconds(1);
             secondsLeft -= 1;
