@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+
+using TTnT.Player.Weapons;
+
 using UnityEngine;
 
 public class WeaponManger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[SerializeField] private WeaponType weaponType = WeaponType.Primary;
+	[SerializeField] private List<BaseWeapon> weapons;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	
+	
+	public BaseWeapon EquipedWeapon()
+	{
+		return weapons[(int)weaponType];
+	}
+
+	public void SwapWeapon(int _weapon) => weaponType = (WeaponType)_weapon;
 }

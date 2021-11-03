@@ -25,7 +25,12 @@ namespace TTnT.Scripts
         #region public Variables
         public bool isDead;
         public GameObject[] hideObjects;
-        #endregion
+        [SerializeField] private float radius;
+        [SerializeField] private float offset;
+        [SerializeField] private LayerMask ignorePlayer;
+        [SerializeField] private Transform body;
+
+    #endregion
         #region Start Update
         private void Start()
         {
@@ -34,6 +39,12 @@ namespace TTnT.Scripts
         }
         private void Update()
         {
+            // fixed ground check made it much more simple
+            var pos = body.position;
+            pos.y = body.position.y + offset;
+            
+            grounded = Physics.CheckSphere(pos, radius, ignorePlayer);
+
             if(!isDead) PlayerMovement();
             else if (isDead) PlayerSpectatorMode();
         }
@@ -89,8 +100,17 @@ namespace TTnT.Scripts
         }
         #endregion
         #region Basic Ground Check
-        private void OnTriggerEnter(Collider _other) { if(!_other.gameObject.CompareTag("Player")) grounded = true; }
-        private void OnTriggerExit(Collider _other) { if(!_other.gameObject.CompareTag("Player")) grounded = false; }
+        //private void OnTriggerEnter(Collider _other) { if(!_other.gameObject.CompareTag("Player")) grounded = true; }
+        //private void OnTriggerExit(Collider _other) { if(!_other.gameObject.CompareTag("Player")) grounded = false; }
         #endregion
+
+        private void OnDrawGizmos()
+        {
+            var pos = body.position;
+            pos.y = body.position.y + offset;
+            
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(pos, radius);
+        }
     }
 }

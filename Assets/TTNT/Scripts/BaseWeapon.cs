@@ -41,9 +41,12 @@ namespace TTnT.Player.Weapons
 		[SerializeField] private int clipSize = 8;
 		[SerializeField] private int maxClips = 5;
 
-		private ShootMode shootMode;
+		[SerializeField] private ShootMode shootMode;
         private bool fireMode;
 		private int count = 0;
+		
+		[Header("effects")]
+		public AudioClip shootEffect;
 		
 		public virtual bool SwapFireMode()
 		{
