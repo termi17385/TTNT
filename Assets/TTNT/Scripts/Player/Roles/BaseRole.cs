@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TTNT.Scripts.Player.Roles
 {
-    enum RoleType
+    public enum RoleType
     {
         Innocent,
         Traitor,
@@ -12,19 +12,19 @@ namespace TTNT.Scripts.Player.Roles
     }
     public class BaseRole : MonoBehaviour
     {
-    
-    
+        public RoleType playerRole;
+
         // ADD STUFF THAT OPENS INNOCENT INFO PAGE WHEN STARTING
         // Start is called before the first frame update
         void Start()
         {
-        
+            
         }
 
         // Update is called once per frame
         void Update()
         {
-        
+            
         }
     }
 }
