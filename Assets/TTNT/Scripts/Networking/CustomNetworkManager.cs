@@ -25,9 +25,9 @@ public class CustomNetworkManager : NetworkManager
 		public GameManager gameManager;
 
 		[CanBeNull]
-		public static NetworkPlayer FindPlayer(uint _id)
+		public static NetworkCharacter FindPlayer(uint _id)
 		{
-			Instance.players.TryGetValue(_id, out NetworkPlayer player);
+			Instance.players.TryGetValue(_id, out NetworkCharacter player);
 			return player;
 		}
 
@@ -35,18 +35,18 @@ public class CustomNetworkManager : NetworkManager
 		/// Adds a player to the dictionary
 		/// </summary>
 		/// <param name="_player"></param>
-		public static void AddPlayer([NotNull] NetworkPlayer _player) => Instance.players.Add(_player.netId, _player);
+		public static void AddPlayer([NotNull] NetworkCharacter _player) => Instance.players.Add(_player.netId, _player);
 
 		/// <summary>
 		/// Removes a player from the dictionary
 		/// </summary>
 		/// <param name="_player"></param>
-		public static void RemovePlayer([NotNull] NetworkPlayer _player) => Instance.players.Remove(_player.netId);
+		public static void RemovePlayer([NotNull] NetworkCharacter _player) => Instance.players.Remove(_player.netId);
 
 		/// <summary>
 		/// A reference to the localplayer of the game
 		/// </summary>
-		public static NetworkPlayer LocalPlayer
+		public static NetworkCharacter LocalPlayer
 		{
 			get
 			{
@@ -54,7 +54,7 @@ public class CustomNetworkManager : NetworkManager
 				if (localPlayer == null)
 				{
 					// loop through each player in the game and check if it is a local player
-					foreach (NetworkPlayer networkPlayer in Instance.players.Values)
+					foreach (NetworkCharacter networkPlayer in Instance.players.Values)
 					{
 						if (networkPlayer.isLocalPlayer)
 						{
@@ -72,7 +72,7 @@ public class CustomNetworkManager : NetworkManager
 		/// <summary>
 		/// the internal reference to the localPlayer
 		/// </summary>
-		private static NetworkPlayer localPlayer;
+		private static NetworkCharacter localPlayer;
 
 		/// <summary>
 		/// Whether or not this NetworkManager is the host
@@ -84,7 +84,7 @@ public class CustomNetworkManager : NetworkManager
 		/// <summary>
 		/// The dictionary of all connected players using their NetID as the key
 		/// </summary>
-		private readonly Dictionary<uint, NetworkPlayer> players = new Dictionary<uint, NetworkPlayer>();
+		private readonly Dictionary<uint, NetworkCharacter> players = new Dictionary<uint, NetworkCharacter>();
 
 		/// <summary>
 		/// This is invoked when a host is started.

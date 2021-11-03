@@ -62,7 +62,7 @@ public class PlayerControls : MonoBehaviour
         {
             Reloading();
         }
-         if (pistol && anim.runtimeAnimatorController == assaultrifle)
+        if (pistol && anim.runtimeAnimatorController == assaultrifle)
         {
             UsingPistol();
             anim.runtimeAnimatorController = handgun as RuntimeAnimatorController;

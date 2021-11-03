@@ -30,12 +30,12 @@ namespace TTnT.Scripts.Networking
             if(isServer)
             {
                 //CmdSpawnIdentities();
+                //CmdSpawnIdentities();
             }
 
             if (isLocalPlayer)
             {
                 selfUI.SetActive(false);
-                CmdSpawnIdentities();
             }
             else
             {
@@ -68,7 +68,7 @@ namespace TTnT.Scripts.Networking
             PlayerController controller = gameObject.GetComponent<PlayerController>();
             controller.enabled = isLocalPlayer;
             
-            CustomNetworkManager.AddPlayer(this);
+           // CustomNetworkManager.AddPlayer(this);
         }
 
         [Command]
@@ -79,7 +79,7 @@ namespace TTnT.Scripts.Networking
         
         public override void OnStopClient()
         {
-            CustomNetworkManager.RemovePlayer(this);
+            //CustomNetworkManager.RemovePlayer(this);
         }
 
     }

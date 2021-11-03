@@ -12,7 +12,7 @@ public class UIFollowCam : MonoBehaviour
     
     private void Update()
     {
-        localPlayer = CustomNetworkManager.LocalPlayer;
+       // localPlayer = CustomNetworkManager.LocalPlayer;
         if(localPlayer != null)
         {
             target = localPlayer.transform;
