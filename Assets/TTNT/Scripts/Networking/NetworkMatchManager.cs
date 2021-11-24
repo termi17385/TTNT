@@ -17,39 +17,33 @@ namespace TTNT.Scripts.Networking
         [Command]
         public void CmdChangeMatchStatus(MatchStatus _status)
         {
-            foreach (var player in GameManager.instance.GetPlayerIdentities())
-            {
-                uiManager = player.GetComponent<NetworkCharacter>().uiManager;
-                RpcChangeMatchStatus(_status);
-            }
+            // foreach (var player in GameManager.instance.GetPlayerIdentities())
+            // {
+            //     uiManager = player.GetComponent<NetworkCharacter>().uiManager;
+            //     RpcChangeMatchStatus(_status);
+            // }
         }
 
         [ClientRpc]
         public void RpcChangeMatchStatus(MatchStatus _status)
         {
-            uiManager.SetMatchStatus(_status);
-        }
-
-        private void OnEnable()
-        {
-            StartCoroutine(WaitForClient());
-            
+           // uiManager.SetMatchStatus(_status);
         }
 
         private void Update()
         {
-            foreach (var player in GameManager.instance.GetPlayerIdentities())
-            {
-                uiManager = player.GetComponent<NetworkCharacter>().uiManager;
-                uiManager.DisplayStat(minutesLeft, secondsLeft, StatType.Time);
-            }
+            // foreach (var player in GameManager.instance.GetPlayerIdentities())
+            // {
+            //     uiManager = player.GetComponent<NetworkCharacter>().uiManager;
+            //     uiManager.DisplayStat(minutesLeft, secondsLeft, StatType.Time);
+            // }
         }
 
         IEnumerator WaitForClient()
         {
             Debug.Log("Waiting On Client");
             yield return new WaitForSeconds(1);
-            CmdChangeMatchStatus(MatchStatus.Preparing);
+            //CmdChangeMatchStatus(MatchStatus.Preparing);
             minutesLeft = 5;
             // Starts the timer
             StartCoroutine("CountdownTimer");

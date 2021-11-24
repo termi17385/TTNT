@@ -43,7 +43,7 @@ namespace TTnT.Scripts.Networking
                 cam.enabled = false;
                 canvas.enabled = false;
                 mouseLook.enabled = false;
-                gun.enabled = false;
+                //gun.enabled = false;
                 listener.enabled = false;
                 foreach(var audioSource in gunAudioSources) audioSource.enabled = false;
                 foreach(Transform child in gameObject.transform) child.gameObject.layer = LayerMask.NameToLayer(remotePlayerName);

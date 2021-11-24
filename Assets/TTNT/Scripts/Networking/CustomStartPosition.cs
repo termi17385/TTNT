@@ -1,6 +1,5 @@
-﻿using Mirror;
-
-using UnityEngine;
+﻿using UnityEngine;
+using Mirror;
 
 namespace TTnT.Scripts.Networking
 {
@@ -16,7 +15,7 @@ namespace TTnT.Scripts.Networking
 	{
 		public SpawnType type = SpawnType.Weapon;
 		
-		public override void Awake() => CustomNetworkManager.Instance.RegisterSpawnPoint(transform, type);
-		public override void OnDestroy() => CustomNetworkManager.Instance.RegisterSpawnPoint(transform, type);
+		//public override void Awake() => CustomNetworkManager.Instance.RegisterSpawnPoint(transform, type);
+		//public override void OnDestroy() => CustomNetworkManager.Instance.RegisterSpawnPoint(transform, type);
 	}
 }

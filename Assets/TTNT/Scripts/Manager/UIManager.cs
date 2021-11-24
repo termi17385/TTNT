@@ -9,10 +9,10 @@ namespace TTNT.Scripts.Manager
 {
     public enum MatchStatus
     {
-        InProgress,
-        OverTime,
-        MatchEnd,
-        Preparing
+        InProgress = 0,
+        OverTime = 1,
+        MatchEnd = 2,
+        Preparing = 3
     }
 
     public enum StatType
@@ -20,7 +20,6 @@ namespace TTNT.Scripts.Manager
         Health,
         Stamina,
         Ammo,
-        Time
     }
 
     public class UIManager : MonoBehaviour
@@ -35,7 +34,15 @@ namespace TTNT.Scripts.Manager
     
         // Methods for handling the bars
         // Methods for handling the Text
-        public string SetMatchStatus(MatchStatus _status) => textMatchStatus.text = Enum.GetName(typeof(MatchStatus), _status);
+        public void SetMatchStatus(int _mins, float _secs, float _clampedTime, MatchStatus _status)
+        {
+            var displaySeconds = Mathf.RoundToInt(_secs);
+            textTime.text = $"{_mins:00} : {displaySeconds:00}";
+
+            textMatchStatus.text = Enum.GetName(typeof(MatchStatus), _status);
+            clock.fillAmount = _clampedTime;
+        } 
+            
 
         /// <summary> Handles displaying the value of
         /// the given stat type to the players UI  </summary>
@@ -53,7 +60,6 @@ namespace TTNT.Scripts.Manager
                 case StatType.Health:  text = textHealth; image = barHealth; break;
                 case StatType.Stamina: text = textStamina; image = barStamina; break;
                 case StatType.Ammo:    text = textAmmo; image = barAmmo; break;
-                case StatType.Time:    text = textTime; image = clock; break;
                 default:               throw new ArgumentOutOfRangeException(nameof(_statType), _statType, null);
             }
         

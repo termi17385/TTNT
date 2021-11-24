@@ -1,45 +1,62 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using Mirror;
-using TTnT.Scripts;
-using TTNT.Scripts.Manager;
-using TTNT.Scripts.Networking;
 using UnityEngine;
+using Mirror;
+
+using Random = UnityEngine.Random;
 
 namespace TTNT.Scripts.Player.Roles
 {
     public class RoleAssigner : MonoBehaviour
     {
         [SerializeField] private int traitorNumber;
-        
-        public NetworkMatchManager networkMatchManager;
+        [SerializeField] private int detectiveNumber;
 
-        // Start is called before the first frame update
-        void Start()
+        public int playerCount;
+        public List<NetworkIdentity> players = new List<NetworkIdentity>();
+        public static RoleAssigner instance;
+
+        private void Awake()
         {
-            StartCoroutine("Startup");
-            
-            networkMatchManager.CmdChangeMatchStatus(MatchStatus.Preparing);
+            if(instance == null) instance = this;
+            else Destroy(this);
         }
 
-        // Update is called once per frame
+        public void OnPlayerJoinedOrLeft()
+        {
+            playerCount = GameManager.instance.GetPlayerIdentities().Count;
+            
+            players.Clear();
+            players = GameManager.instance.GetPlayerIdentities();
+        }
+
+        // Get a RandomPlayer then assign a role to them
+        // Make sure all special roles are assigned first
+        // if all roles are assigned return
+        public void AssignRole()
+        {
+            var randomNum = Random.Range(0, playerCount);
+            if(traitorNumber > 0 || detectiveNumber > 0)
+            {
+                if(traitorNumber > 0)
+                {
+                    
+                }
+            }
+        }
+
+        // julian code 
+        /*// Update is called once per frame
         void Update()
         {
-        
+            
         }
 
-        IEnumerable Startup()
+        public IEnumerator Startup()
         {
             // Give 15 seconds for all players to load in
             yield return new WaitForSeconds(15);
-            
             AssignRoles();
-
-            GameManager.instance.StartCoroutine("CountdownTimer");
-            
-            networkMatchManager.CmdChangeMatchStatus(MatchStatus.InProgress);
+            //GameManager.instance.StartCoroutine("CountdownTimer");
         }
 
         public void AssignRoles()
@@ -53,9 +70,9 @@ namespace TTNT.Scripts.Player.Roles
             // Gives BaseRole to every player (and also make sure none of them are dead)
             for (int i = 0; i < identities.Count; i++)
             {
-                identities[i].gameObject.AddComponent<BaseRole>();
-                identities[i].GetComponent<BaseRole>().playerRole = RoleType.Innocent;
-                identities[i].GetComponent<NetworkPlayerManager>().isDead = false;
+                identities[i].gameObject.AddComponent<SpecialRole>();
+                //identities[i].GetComponent<SpecialRole>().playerRole = RoleType.Innocent;
+                identities[i].GetComponent<NetworkCharacter>().CmdPlayerStatus(false);
             }
             
             for (int i = 0; i < traitorNumber; i++)
@@ -63,18 +80,18 @@ namespace TTNT.Scripts.Player.Roles
                 // Picks traitorNumber amount of random players to become traitors
                 NetworkIdentity pickedTraitor = identities[Random.Range(0, identities.Count)];
                 pickedTraitor.gameObject.AddComponent<Traitor>();
-                pickedTraitor.GetComponent<BaseRole>().playerRole = RoleType.Traitor;
+              //  pickedTraitor.GetComponent<SpecialRole>().playerRole = RoleType.Traitor;
                 // Takes the picked player out of the selection list
                 identities.Remove(pickedTraitor);
             }
             
             // Picks a detective and removes them from the selection list
+            if(identities.Count <= 0) return;
             NetworkIdentity pickedDetective = identities[Random.Range(0, identities.Count)];
-            pickedDetective.gameObject.AddComponent<Detective>();
-            pickedDetective.GetComponent<BaseRole>().playerRole = RoleType.Detective;
+            pickedDetective.gameObject.AddComponent<Traitor>();
+//            pickedDetective.GetComponent<SpecialRole>().playerRole = RoleType.Detective;
             identities.Remove(pickedDetective);
-            
         }
-
+    }*/
     }
 }

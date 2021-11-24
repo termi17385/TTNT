@@ -10,11 +10,10 @@ namespace TTNT.Scripts.Player.Roles
         Traitor,
         Detective
     }
-    public class BaseRole : MonoBehaviour
+    
+    public class SpecialRole : MonoBehaviour
     {
-        public RoleType playerRole;
-
-        // ADD STUFF THAT OPENS INNOCENT INFO PAGE WHEN STARTING
+        
         // Start is called before the first frame update
         void Start()
         {

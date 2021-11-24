@@ -1,23 +1,22 @@
 using System.Collections.Generic;
+using TTNT.Scripts.Player.Roles;
+using TTnT.Scripts.Networking;
 using JetBrains.Annotations;
+using System.Linq;
 using UnityEngine;
 using Mirror;
-
 using System;
-using System.Linq;
 
-using TTnT.Scripts.Networking;
-using TTNT.Scripts.Networking;
-using NetworkPlayer = TTnT.Scripts.Networking.NetworkPlayer;
 public class CustomNetworkManager : NetworkManager
 	{
 		public List<Transform> weaponPoints = new List<Transform>();
 		public List<Transform> ammoPoints = new List<Transform>();
 
 		[SerializeField] SpawnPointManager spawner;
-		[SerializeField] private NetworkMatchManager matchManager;
+		//[SerializeField] private NetworkMatchManager matchManager;
 		
 		private new int startPositionIndex;
+		public bool matchStarted = false;
 		
 		
 		/// <summary>
@@ -110,8 +109,11 @@ public class CustomNetworkManager : NetworkManager
 		public override void OnStartServer()
 		{
 			Debug.Log("Server Started!");
-			matchManager.enabled = true;
-			//StartCoroutine(spawner.SpawnItemsOnServerStart());
+			//matchManager.enabled = true;
+			
+			//var roleAssigner = RoleAssigner.instance;
+			//StartCoroutine(roleAssigner.Startup());
+			matchStarted = true;
 		}
 
 		public override void OnStopServer()
@@ -122,9 +124,17 @@ public class CustomNetworkManager : NetworkManager
 		public override void OnServerAddPlayer(NetworkConnection conn)
 		{
 			base.OnServerAddPlayer(conn);
-			GameManager.instance.connectedPlayer.Add(conn.identity, conn.identity.name);
+			GameManager.instance.connectedPlayers.Add(conn.identity, conn.identity.name);
+			RoleAssigner.instance.OnPlayerJoinedOrLeft();
 			//if(numPlayers == 1) StartCoroutine(spawner.SpawnItemsOnServerStart());
 			//else NetworkServer.SpawnObjects();
+		}
+
+		public override void OnServerDisconnect(NetworkConnection conn)
+		{
+			base.OnServerDisconnect(conn);
+			GameManager.instance.connectedPlayers.Remove(conn.identity);
+			RoleAssigner.instance.OnPlayerJoinedOrLeft();
 		}
 
 		/*public override void OnClientConnect(NetworkConnection _conn)
@@ -156,6 +166,9 @@ public class CustomNetworkManager : NetworkManager
 			}
 		}
 
+		//public int GetTime(out float _seconds) => ServerMatchManager.instance.TimerTest(out _seconds);
+		//public void GetTime(out float _min, out float _sec, out float _clampedTime, out MatchStatus _status) => ServerMatchManager.instance.MatchTime(out _min, out _sec, out _clampedTime, out _status);
+		
 		public Transform GetSpawnPoint(SpawnType _type)
 		{
 			switch(_type)
@@ -179,5 +192,10 @@ public class CustomNetworkManager : NetworkManager
 
 			Debug.LogException(new Exception("Invalid Spawn Type"));
 			return null;
+		}
+
+		private void Update()
+		{
+			//if(matchStarted) ServerMatchManager.instance.MatchTime();
 		}
 	}

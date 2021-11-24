@@ -1,17 +1,10 @@
+using TTNT.Scripts.Manager;
+using System.Collections;
+using TTnT.Scripts;
+using UnityEngine;
 using Mirror;
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
-using TTnT.Scripts.Networking;
-using TTnT.Scripts;
-
-using TTNT.Scripts.Manager;
-
-using UnityEngine;
-
+[RequireComponent(typeof(NetworkTimer))]
 public class NetworkCharacter : NetworkBehaviour
 {
 	[SyncVar] public float health;
@@ -23,12 +16,18 @@ public class NetworkCharacter : NetworkBehaviour
 	public UIManager uiManager;
 	[SerializeField] private GameObject body;
 	
+	private float minutes;
+	private float seconds;
+	private MatchStatus status = MatchStatus.Preparing;
+	private float clampedTime;
+	
 	private string remotePlayerName = "RemotePlayer";
-	private CharacterController cController;
-	private PlayerController pController;
-	private PlayerShoot pShoot;
+	[SerializeField]private CharacterController cController;
+	[SerializeField]private PlayerController pController;
+	[SerializeField]private PlayerShoot pShoot;
 	private bool canRespawn = false;
 	private const float MAX_HEALTH = 100;
+	private NetworkTimer matchTimer;
 
 	private void Start()
 	{
@@ -36,7 +35,7 @@ public class NetworkCharacter : NetworkBehaviour
 		{
 			cController = GetComponent<CharacterController>();
 			pController = GetComponent<PlayerController>();
-			pShoot = GetComponent<PlayerShoot>();
+			matchTimer = GetComponent<NetworkTimer>();
 			
 			SetHealth();
 			uiManager.DisplayStat(health, MAX_HEALTH, StatType.Health);
@@ -48,7 +47,9 @@ public class NetworkCharacter : NetworkBehaviour
 			foreach(var component in componentsToDisable) component.enabled = false;
 			foreach(Transform child in gameObject.transform) child.gameObject.layer = LayerMask.NameToLayer(remotePlayerName);
 			gameObject.layer = LayerMask.NameToLayer(remotePlayerName);
+			body.GetComponent<MeshRenderer>().enabled = true;
 			body.SetActive(true);
+			pShoot.enabled = false;
 		}
 	}
 	
@@ -64,7 +65,7 @@ public class NetworkCharacter : NetworkBehaviour
 			cController.enabled = false;
 			pController.isDead = true;
 			pShoot.enabled = false;
-			body.GetComponent<Renderer>().enabled = false;
+			body.GetComponent<MeshRenderer>().enabled = false;
 			StartCoroutine(RespawnButton());
 		}
 		else
@@ -80,7 +81,8 @@ public class NetworkCharacter : NetworkBehaviour
 			pShoot.enabled = true;
 			SetHealth();
 			canRespawn = false;
-			body.GetComponent<Renderer>().enabled = true;
+			body.GetComponent<MeshRenderer>().enabled = true;
+			
 		}
 	}
 
@@ -108,9 +110,8 @@ public class NetworkCharacter : NetworkBehaviour
 	public void RpcDamage(float _dmg)
 	{
 		if(isLocalPlayer) uiManager.DisplayStat(health, MAX_HEALTH, StatType.Health);
-		
-		StopCoroutine(HitIndication());
 		StartCoroutine(HitIndication());
+		
 		health -= _dmg;
 		if(health <= 0)
 		{
@@ -128,17 +129,31 @@ public class NetworkCharacter : NetworkBehaviour
 	
 	/// <summary> handles if the player
 	/// is dead of not </summary>
-	/// <param name="_value"></param>
+	/// <param name="_value">whether the player
+	/// is dead or alive</param>
 	[Command]
 	public void CmdPlayerStatus(bool _value)
 	{
 		isDead = _value;
 	} 
 	
-	private void Update()
+	private void LateUpdate()
 	{
-		if(isLocalPlayer) uiManager.DisplayStat(health, MAX_HEALTH, StatType.Health);
+		if(isLocalPlayer)
+		{
+			//CmdGetTime();
+			matchTimer.MatchTime(out minutes, out seconds, out clampedTime, out status);
+			uiManager.SetMatchStatus((int)minutes, seconds, clampedTime, status);
+
+			uiManager.DisplayStat(health, MAX_HEALTH, StatType.Health);
+
+			//minutes = CustomNetworkManager.Instance.GetTime(out seconds);
+			//uiManager.SetMatchStatus(minutes, seconds, 5, MatchStatus.Preparing);
+		}
 	}
+
+	//[Command] private void CmdGetTime() => RpcSetTime();
+	//[ClientRpc] private void RpcSetTime() => CustomNetworkManager.Instance.GetTime(out minutes, out seconds, out clampedTime, out status);
 	
 	public override void OnStartClient()
 	{
@@ -146,6 +161,9 @@ public class NetworkCharacter : NetworkBehaviour
 		// isLocalPlayer is true if this object is the client's local player otherwise it's false
 		PlayerController controller = gameObject.GetComponent<PlayerController>();
 		controller.enabled = isLocalPlayer;
+		
+		cController.enabled = isLocalPlayer;
+		//pShoot.enabled = isLocalPlayer;
             
 		CustomNetworkManager.AddPlayer(this);
 	}
