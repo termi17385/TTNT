@@ -35,6 +35,7 @@ namespace TTnT.Scripts.Networking
 
             if (isLocalPlayer)
             {
+                Debug.Log("Thinks this is localplayer");
                 selfUI.SetActive(false);
             }
             else
@@ -44,6 +45,7 @@ namespace TTnT.Scripts.Networking
                 canvas.enabled = false;
                 mouseLook.enabled = false;
                 gun.enabled = false;
+                Debug.Log("Start is working");
                 listener.enabled = false;
                 foreach(var audioSource in gunAudioSources) audioSource.enabled = false;
                 foreach(Transform child in gameObject.transform) child.gameObject.layer = LayerMask.NameToLayer(remotePlayerName);

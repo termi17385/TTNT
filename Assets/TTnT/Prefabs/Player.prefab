@@ -563,6 +563,7 @@ MonoBehaviour:
   - {fileID: 5402213314089992604}
   uiManager: {fileID: 7030267071797778873}
   body: {fileID: 347864670}
+  listener: {fileID: 70217054897089113}
 --- !u!143 &745577836770779173
 CharacterController:
   m_ObjectHideFlags: 0

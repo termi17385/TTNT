@@ -31,8 +31,7 @@ namespace TTnT.Scripts
 			playerManager = GetComponent<NetworkPlayerManager>();
 			spread = 0.05f;
 		}
-
-		private int count = 0;
+		
 		private bool shootModeBool;
 		/*private void Update()
 		{

@@ -110,7 +110,7 @@ public class CustomNetworkManager : NetworkManager
 		public override void OnStartServer()
 		{
 			Debug.Log("Server Started!");
-			matchManager.enabled = true;
+			//matchManager.enabled = true;
 			//StartCoroutine(spawner.SpawnItemsOnServerStart());
 		}
 

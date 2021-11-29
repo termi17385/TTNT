@@ -22,6 +22,7 @@ public class NetworkCharacter : NetworkBehaviour
 	[SerializeField] private GameObject[] hideArms;
 	public UIManager uiManager;
 	[SerializeField] private GameObject body;
+	[SerializeField] private AudioListener listener;
 	
 	private string remotePlayerName = "RemotePlayer";
 	private CharacterController cController;
@@ -45,6 +46,7 @@ public class NetworkCharacter : NetworkBehaviour
 		else
 		{
 			// disabled on the remote player
+			listener.enabled = false;
 			foreach(var component in componentsToDisable) component.enabled = false;
 			foreach(Transform child in gameObject.transform) child.gameObject.layer = LayerMask.NameToLayer(remotePlayerName);
 			gameObject.layer = LayerMask.NameToLayer(remotePlayerName);

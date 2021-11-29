@@ -8,10 +8,6 @@ public class PlayerControls : MonoBehaviour
     public float currentSpeed = 5f;
     public float speed = 5f;
     public float rotationSpeed = 100f;
-    float defaultWeight = 0f;
-    float newWeight;
-    float pistolWeight;
-    float rifleWeight;
 
     private Animator anim;
     public RuntimeAnimatorController assaultrifle;
